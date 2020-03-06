@@ -54,5 +54,6 @@ class Board
   def update(input, player)
     cells[idx(input)] = player.token if valid_move?(input)
     puts "#{player.token} moves to #{input}"
+    # I included a message so that players would know their opponent's last move.
   end
 end
