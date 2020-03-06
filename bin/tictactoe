@@ -34,6 +34,8 @@ def mode_selection
     puts "Oooh! You want HAL 9000 and R2D2 to go at each other?"
     puts "Enter anything to commence!"
     input = gets.strip
+    # I want my 'wargames' mode to be like an easter egg.
+    # That's why I didn't put it in the choices.
 
     if input == "wargames"
       Game.wargames

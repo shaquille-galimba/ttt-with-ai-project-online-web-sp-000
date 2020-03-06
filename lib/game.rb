@@ -55,6 +55,8 @@ class Game
     puts "X will start!"
     puts "Please enter a number 1-9:"
     board.board_indices
+    # Included a board with the corresponding number on the spaces
+    # So that players will have a guide and won't be confused.
     turn until over?
     if won?
       puts "Congratulations #{winner}!"
