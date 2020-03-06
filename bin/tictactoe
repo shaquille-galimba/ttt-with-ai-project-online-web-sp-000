@@ -1,3 +1,64 @@
 #!/usr/bin/env ruby
 
 require_relative '../config/environment'
+
+
+puts "Welcome to Tic Tac Toe!"
+
+def mode_selection
+  puts "Choose your mode. (Select the number)"
+  puts "1. Head to head! (PvP)"
+  puts "2. Rage against the machines! (PvAI)"
+  puts "3. Two AI will fight for your amusement!"
+  puts "4. Exit and choose not to play :("
+  mode = gets.strip
+
+  if mode == "1"
+    Game.new.play
+  elsif mode == "2"
+    puts "Who will go first?"
+    puts "1. 'I choose to go first!'"
+    puts "2. 'Let the machine go first!'"
+    puts "Enter anything to go back to mode selection."
+    first = gets.strip
+
+    if first == "1"
+      Game.new(Players::Human.new("X"), Players::Computer.new("O")).play
+    elsif first == "2"
+      Game.new(Players::Computer.new("X"), Players::Human.new("O")).play
+    else
+      mode_selection
+    end
+
+  elsif mode == "3"
+    puts "Oooh! You want HAL 9000 and R2D2 to go at each other?"
+    puts "Enter anything to commence!"
+    input = gets.strip
+
+    if input == "wargames"
+      Game.wargames
+    else
+      Game.new(Players::Computer.new("X"), Players::Computer.new("O")).play
+    end
+
+  elsif mode == "4"
+    exit
+  else
+    puts "Invalid input, returning to mode selection.."
+    mode_selection
+  end
+
+  puts "Would you like to play again? y/n"
+  play_again = gets.strip
+
+  if play_again == "y"
+    mode_selection
+  else
+    exit
+  end
+
+
+
+end
+
+mode_selection
